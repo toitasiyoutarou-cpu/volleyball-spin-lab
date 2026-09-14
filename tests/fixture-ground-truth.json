@@ -1,0 +1,17 @@
+{
+  "fps": 240,
+  "frames": 360,
+  "hz": 5,
+  "axis_image_degrees": 60,
+  "axis_vector_xyz": [
+    0.45,
+    0.7794228634059948,
+    0.4358898943540673
+  ],
+  "width": 640,
+  "height": 360,
+  "center_x": "250 + frame*0.13",
+  "center_y": "184 - frame*0.024",
+  "radius": "73 - frame*0.025",
+  "synthetic": true
+}

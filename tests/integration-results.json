@@ -1,0 +1,15 @@
+{
+  "demo": {
+    "axis": 60.116467399318196,
+    "hz": 5.000036180467861,
+    "confidenceAxis": 61,
+    "confidenceHz": 61
+  },
+  "firstAnchor": {
+    "axis": 60.20206071794095,
+    "hz": 5.000436964170778,
+    "axisReasons": [],
+    "hzReasons": []
+  },
+  "browserTest": false
+}
