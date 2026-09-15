@@ -1,0 +1,21 @@
+{
+  "video": "synthetic-vfr.mp4",
+  "width": 256,
+  "height": 256,
+  "frames": 240,
+  "truthHz": 5,
+  "truthAxis": 60,
+  "initialCenter": [
+    128,
+    128
+  ],
+  "initialDiameter": 144,
+  "medianFps": 240.00000000000006,
+  "vfr": true,
+  "timestampMaxErrorSeconds": 1.1102230246251565e-16,
+  "hz": 4.999696596798877,
+  "axis": 60.19922590581382,
+  "confidenceHz": 61,
+  "confidenceAxis": 62,
+  "decoder": "FFmpeg, not a browser"
+}

@@ -1,0 +1,38 @@
+{
+  "vfr": {
+    "axis": 59.453781057556625,
+    "hz": 4.999363737543451,
+    "axisMethod": "constant-rotation",
+    "confidenceAxis": 55,
+    "confidenceHz": 52,
+    "axisReasons": [],
+    "hzReasons": [],
+    "methods": {
+      "sphere": 199
+    },
+    "maxGap": 0.00574980150330473,
+    "irregular": true,
+    "support": 1
+  },
+  "acceleration": {
+    "axis": 59.6409596391436,
+    "hz": null,
+    "axisMethod": "stable-axis",
+    "confidenceAxis": 56,
+    "confidenceHz": 0,
+    "axisReasons": [],
+    "hzReasons": [
+      "角速度の変動が大きく、一定回転の仮定に一致しません。",
+      "異なるフレーム間隔で求めた角速度が一致しません。",
+      "複数の模様特徴で再現する回転周期を確認できません。",
+      "周期から求めた周波数と球面回転モデルが一致しません。",
+      "回転数の品質スコアが採用基準50%に届きません。"
+    ],
+    "methods": {
+      "sphere": 209
+    },
+    "maxGap": 0.004166666666666763,
+    "irregular": false,
+    "support": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "version": "1.2",
+  "environment": "Node.js, native Canvas, mock DOM; not browser or iPad",
+  "checks": [
+    "Three contour failures recover automatically using future frames, without new manual anchors or duplicate frames",
+    "Near-position contour re-search validates surface motion and resumes automatically",
+    "Long tracking loss stops at the original frame with manual recovery available",
+    "Automatic interpolation rejects invisible or textureless balls instead of inventing motion",
+    "VFR time-aware prediction and result gating work; inferred slow-motion multiplier is blocked",
+    "Non-increasing timestamps are rejected and result failures provide concrete next actions"
+  ],
+  "metrics": {
+    "bridge": {
+      "hz": 5.000186104747842,
+      "axis": 60.138636549485824,
+      "recovered": [
+        60,
+        61,
+        62
+      ]
+    },
+    "vfr": {
+      "hz": 4.9977926425528025,
+      "axis": 60.15275804777286
+    }
+  }
+}
