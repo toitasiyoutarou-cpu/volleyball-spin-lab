@@ -1,0 +1,11 @@
+// Integration harness with native Canvas and simulated DOM. This is NOT a browser/Safari test.
+const fs=require('fs'),assert=require('assert'),path=require('path');const {createCanvas}=require(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES?process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/@napi-rs/canvas':'@napi-rs/canvas');
+const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8'),elements={};
+function el(tag,id=''){const e=tag==='canvas'?createCanvas(300,150):{};Object.assign(e,{id,style:{},value:'',textContent:'',innerHTML:'',disabled:false,hidden:false,checked:false,children:[],listeners:{},addEventListener(type,fn){(this.listeners[type]??=[]).push(fn)},removeEventListener(){},setPointerCapture(){},replaceChildren(...v){this.children=v},append(...v){this.children.push(...v)},remove(){},async click(){if(!this.disabled)return this.onclick?.({target:this})},dispatch(type,event){for(const fn of this.listeners[type]||[])fn(event)},removeAttribute(){},setAttribute(){},getBoundingClientRect(){return{left:0,top:0,width:this.width||640,height:this.height||360}}});return e}
+for(const m of html.matchAll(/<(\w+)[^>]*\bid="([^"]+)"[^>]*>/g)){const e=el(m[1],m[2]);for(const attr of['value','width','height','min','max']){const z=m[0].match(new RegExp(attr+'="([^"]+)"'));if(z)e[attr]=(attr==='width'||attr==='height')?Number(z[1]):z[1]}elements[m[2]]=e}
+const document={getElementById:id=>elements[id],createElement:tag=>el(tag),hidden:false,body:el('body'),documentElement:{outerHTML:html.replace(/^<!doctype html>/i,'')}};
+Object.assign(elements.video,{pause(){},load(){},duration:1.5,readyState:2,videoWidth:640,videoHeight:360});elements.stride.value='1';elements.timeMode.value='normal';elements.trackingMode.value='auto';const window={addEventListener(){}};
+const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]).join('\n');
+const tests=fs.readFileSync(path.join(__dirname,'recovery-scenarios.js'),'utf8');
+const fn=new (Object.getPrototypeOf(async function(){}).constructor)('document','window','assert','fs','outputPath',scripts+'\n'+tests);
+fn(document,window,assert,fs,path.join(__dirname,'recovery-results.json')).catch(e=>{console.error(e);process.exitCode=1});

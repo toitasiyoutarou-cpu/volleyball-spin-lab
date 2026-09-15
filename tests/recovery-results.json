@@ -1,0 +1,25 @@
+{
+  "version": "1.1",
+  "environment": "Node.js + native Canvas + mock DOM; not a browser or Safari",
+  "checks": [
+    "Boundary failure opens exact frame, unlocks editing, preserves prefix and blocks unchanged retry",
+    "Same-frame candidates persist, use buttons select one, resume uses its exact circle without boundary rejection or duplicate frames",
+    "Rejected texture never mutates engine history; manual failure gives specific advice; identical saved candidate is not retried; corrected position resumes",
+    "Editing a previously accepted frame invalidates the checkpoint for a clean restart",
+    "Interpolation requires bounding anchors, follows their coordinates and does not call automatic contour search",
+    "Manual positions retain small-ball and out-of-frame quality gates; candidate deletion is individual with fallback",
+    "Trim ends at the last accepted frame and gives actionable guidance when fewer than 48 frames remain",
+    "Decode failures do not allow saving a stale preview and can resume after decoding recovers",
+    "Cancel/resume retains accepted frames and retries the next unprocessed frame",
+    "Timing, review and no-network constraints remain"
+  ],
+  "metrics": {
+    "recovered": {
+      "hz": 5.000181568593622,
+      "axis": 60.119721630994405,
+      "frames": 144
+    }
+  },
+  "realVideoTest": false,
+  "iPadTest": false
+}
