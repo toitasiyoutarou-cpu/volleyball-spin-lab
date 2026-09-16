@@ -1,5 +1,5 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "environment": "Node.js + native Canvas + mock DOM; not a browser or Safari",
   "checks": [
     "Boundary failure opens exact frame, unlocks editing, preserves prefix and blocks unchanged retry",

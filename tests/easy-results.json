@@ -1,0 +1,24 @@
+{
+  "version": "1.3",
+  "environment": "Node.js + native Canvas + mock DOM. File selection uses real MP4 metadata with synthetic decoded pixels. Not a browser/Safari test.",
+  "checks": [
+    "Demo button detects ball and range, analyzes automatically, and shows numbers without review checkbox",
+    "Selecting a video starts analysis; provisional and adopted results/CSV are separate, and poor evidence is still withheld",
+    "Multiple circles require a tap; a tap alone estimates radius and starts analysis",
+    "No ball falls back to tap and size slider after a bounded scan",
+    "Cancel stops automatic setup and leaves controls usable",
+    "Range decode failure restores the correct editable preview frame"
+  ],
+  "metrics": {
+    "demo": {
+      "hz": 5.000267249608003,
+      "axis": 60.15531165252062,
+      "frames": 480
+    },
+    "file": {
+      "hz": 5.00031301321751,
+      "axis": 60.15218777133322,
+      "frames": 360
+    }
+  }
+}

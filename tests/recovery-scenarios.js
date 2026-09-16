@@ -20,7 +20,7 @@ await candidateButton(wrong,'使用する').click();assert.equal(activeAnchor(60
 await candidateButton(right,'使用する').click();assert.equal(activeAnchor(60).id,right);assert.equal($('resume').disabled,false);
 await $('resume').click();
 assert(!state.result.error,state.result.error);assert.equal(resets,1);assert.equal(state.rows.length,144);assert.equal(state.result.total,143);assert.equal(new Set(state.rows.map(r=>r.frame)).size,144);prefix.forEach((r,i)=>assert.strictEqual(state.rows[i],r));assert.equal(state.rows[60].trackingMethod,'manual');assert.equal(state.rows[60].candidateId,right);assert.equal(state.rows[60].x,truth(60).x);assert.equal(state.rows[60].edgeScore,null);
-assert(!eligible().hz);$('reviewed').checked=true;renderResult();assert(eligible().hz);assert(Math.abs(state.result.hz-5)<.05);assert(Math.abs(state.result.axis-60)<3);
+assert(eligible().hz);state.result.synthetic=false;assert(!eligible().hz);$('reviewed').checked=true;renderResult();assert(eligible().hz);assert(Math.abs(state.result.hz-5)<.05);assert(Math.abs(state.result.axis-60)<3);
 metrics.recovered={hz:state.result.hz,axis:state.result.axis,frames:state.rows.length};
 passed('Same-frame candidates persist, use buttons select one, resume uses its exact circle without boundary rejection or duplicate frames');
 trackFrame=originalTrack;
@@ -60,7 +60,7 @@ passed('Decode failures do not allow saving a stale preview and can resume after
 await demo();$('autoRecovery').checked=false;$('end').value='95';work=async(type,payload,transfer)=>{const value=await countedWork(type,payload,transfer);if(type==='frame'&&state.frame===20)state.cancel=true;return value};await analyze();assert.equal(state.failure.kind,'paused');assert.equal(state.run.next,21);const pausedRows=state.rows.slice();work=countedWork;await $('resume').click();assert(!state.result.error);assert.equal(state.rows.length,96);pausedRows.forEach((r,i)=>assert.strictEqual(state.rows[i],r));
 passed('Cancel/resume retains accepted frames and retries the next unprocessed frame');
 // Public results are still gated by timing and review confirmation.
-$('reviewed').checked=true;state.meta.verified=false;assert(!eligible().hz);state.meta.verified=true;state.confirmedFrames=0;assert(!eligible().hz);state.confirmedFrames=state.rows.length;$('timingConfirmed').checked=false;assert(!eligible().hz);
-assert(pristineHTML.includes("connect-src 'none'"));assert(!/\bfetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon\s*\(/.test(pristineHTML));assert(pristineHTML.includes('研究・実験用 v1.2'));
+state.result.synthetic=false;$('reviewed').checked=true;state.meta.verified=false;assert(!eligible().hz);state.meta.verified=true;state.confirmedFrames=0;assert(!eligible().hz);state.confirmedFrames=state.rows.length;$('timingConfirmed').checked=false;assert(!eligible().hz);
+assert(pristineHTML.includes("connect-src 'none'"));assert(!/\bfetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon\s*\(/.test(pristineHTML));assert(pristineHTML.includes('探Qモード v1.3'));
 passed('Timing, review and no-network constraints remain');
-fs.writeFileSync(outputPath,JSON.stringify({version:'1.2',environment:'Node.js + native Canvas + mock DOM; not a browser or Safari',checks,metrics,realVideoTest:false,iPadTest:false},null,2));
+fs.writeFileSync(outputPath,JSON.stringify({version:'1.3',environment:'Node.js + native Canvas + mock DOM; not a browser or Safari',checks,metrics,realVideoTest:false,iPadTest:false},null,2));
